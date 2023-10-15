@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+ <LINK REL="STYLESHEET" TYPE="text/css" HREF="../../plsqldoc.css">
+ <TITLE>Package hybrid_manager</TITLE>
+ <META name="object" content="PACKAGE">
+ <META name="name" content="HRCNKBM HRC.hybrid_manager">
+ <META name="description" content="">
+</HEAD>
+<BODY>
+<TABLE WIDTH="100%"><TR>
+<TD><P ALIGN="LEFT"><STRONG><SMALL>HRC@HRCNKBM</SMALL></STRONG></TD>
+<TD><P ALIGN="RIGHT"><STRONG><SMALL><A HREF="../../index.html">index</A></SMALL></STRONG></TD>
+</TR></TABLE>
+<TABLE CLASS="MAIN_TABLE"><TR><TD CLASS="DESC_TEXT">
+<P CLASS="MAIN_TITLE">Package hybrid_manager</P>
+
+<BR>
+</TD></TR></TABLE>
+<HR>
+<A NAME="Program units"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Program units
+</TD></TR></TABLE>
+<TABLE CLASS="SUB_TABLE">
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#NEW_LOGIN">new_login</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+This function simulates a hybrid login.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#APEX_SENTRY">apex_sentry</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+This function returns a boolean value indicating whether the Apex session is valid or not.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#APEX_AUTH">apex_auth</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Authenticates a user.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#GET_APEX_URL">get_apex_url</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Generates the Apex url for the given login ID.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#GET_APEX_URL2">get_apex_url</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Generates the Apex url for the package login ID.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#APEX_INIT">apex_init</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Procedure used to initialize the Apex application.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#APEX_CLEANUP">apex_cleanup</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Procedure used to cleanup the Apex application on exit.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#SETUP_HYBRID_DEMO">setup_hybrid_demo</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+This procedure is used to set up the hybrid demo project variables.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_SET_N">cache_set_n</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Sets a numeric value for a given parameter in the cache.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_SET_D">cache_set_d</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Sets a date value for a given parameter in the cache.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_SET_C">cache_set_c</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Sets a text value for a given parameter in the cache.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_GET_N">cache_get_n</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Retrieves the numeric cached value for the given parameter and login ID.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_GET_D">cache_get_d</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Retrieves the date cached value for the given parameter and login ID.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_GET_C">cache_get_c</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Retrieves the cached value for the given parameter and login ID.
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#CACHE_CLEAR">cache_clear</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Clears the cache for the hybrid manager.
+</TD></TR>
+</TABLE>
+<BR>
+<A NAME="Variables"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Variables
+</TD></TR></TABLE>
+<TABLE CLASS="SUB_TABLE">
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#G_LOGIN_ID">g_login_id</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Package login ID variable
+</TD></TR>
+</TABLE>
+<BR>
+<A NAME="Constants"></A>
+<TABLE CLASS="SUB_TABLE"><TR><TD CLASS="SUB_TITLE">
+Constants
+</TD></TR></TABLE>
+<TABLE CLASS="SUB_TABLE">
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#GC_SETUP_BASE_APEX_URL">gc_setup_base_apex_url</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Hybrid demo setup variables
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#GC_SETUP_APEX_APP_ID">gc_setup_apex_app_id</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+
+</TD></TR>
+<TR><TD VALIGN="TOP" CLASS="TYPE_ITEM">
+<A HREF="#GC_SETUP_APEX_PAGE_ID">gc_setup_apex_page_id</A>&nbsp;&nbsp;
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="GC_SETUP_BASE_APEX_URL"></A>
+<P CLASS="TYPE_TITLE">
+gc_setup_base_apex_url
+</P>
+<PRE CLASS="DECL_TEXT">
+gc_setup_base_apex_url constant varchar2(100) := 'APEX_BASE_URL';
+</PRE>
+<P CLASS="DESC_TEXT">
+Hybrid demo setup variables<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="GC_SETUP_APEX_APP_ID"></A>
+<P CLASS="TYPE_TITLE">
+gc_setup_apex_app_id
+</P>
+<PRE CLASS="DECL_TEXT">
+gc_setup_apex_app_id   constant varchar2(100) := 'APEX_BASE_APP_ID';
+</PRE>
+<HR>
+<A NAME="GC_SETUP_APEX_PAGE_ID"></A>
+<P CLASS="TYPE_TITLE">
+gc_setup_apex_page_id
+</P>
+<PRE CLASS="DECL_TEXT">
+gc_setup_apex_page_id  constant varchar2(100) := 'APEX_BASE_PAGE_ID';
+</PRE>
+<HR>
+<A NAME="G_LOGIN_ID"></A>
+<P CLASS="TYPE_TITLE">
+g_login_id
+</P>
+<PRE CLASS="DECL_TEXT">
+g_login_id number;
+</PRE>
+<P CLASS="DESC_TEXT">
+Package login ID variable<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="NEW_LOGIN"></A>
+<P CLASS="TYPE_TITLE">
+new_login
+</P>
+<PRE CLASS="DECL_TEXT">
+Function new_login return number
+
+</PRE>
+<P CLASS="DESC_TEXT">
+This function simulates a hybrid login.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Returns the login id representing a new hybrid login or the existing login_id if it is set inside the package.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="APEX_SENTRY"></A>
+<P CLASS="TYPE_TITLE">
+apex_sentry
+</P>
+<PRE CLASS="DECL_TEXT">
+Function apex_sentry return boolean
+
+</PRE>
+<P CLASS="DESC_TEXT">
+This function returns a boolean value indicating whether the Apex session is valid or not.<br>
+Used inside Apex as the &quot;Sentry Function Name&quot;.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Returns true if the Apex session is valid, false otherwise.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="APEX_AUTH"></A>
+<P CLASS="TYPE_TITLE">
+apex_auth
+</P>
+<PRE CLASS="DECL_TEXT">
+Function apex_auth(p_username in varchar2, p_password in varchar2)
+  return boolean
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Authenticates a user. Receives the username and password from the login page.<br>
+Used inside Apex as the &quot;Authentication Function Name&quot;.<br>
+&nbsp;<br>
+%p_username The username from the login page.<br>
+%p_password The password from the login page.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Returns true if the authentication is successful, otherwise false.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="GET_APEX_URL"></A>
+<P CLASS="TYPE_TITLE">
+get_apex_url
+</P>
+<PRE CLASS="DECL_TEXT">
+Function get_apex_url(p_login_id in number) return varchar2
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Generates the Apex url for the given login ID. If null is provided, the package login ID is used.<br>
+&nbsp;<br>
+%p_login_id The login ID to be used in the generated URL.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Apex url with the specified login ID, else the package login ID.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="GET_APEX_URL2"></A>
+<P CLASS="TYPE_TITLE">
+get_apex_url
+</P>
+<PRE CLASS="DECL_TEXT">
+Function get_apex_url return varchar2
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Generates the Apex url for the package login ID.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+Apex url for the package login ID.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="APEX_INIT"></A>
+<P CLASS="TYPE_TITLE">
+apex_init
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure apex_init
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Procedure used to initialize the Apex application.<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="APEX_CLEANUP"></A>
+<P CLASS="TYPE_TITLE">
+apex_cleanup
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure apex_cleanup
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Procedure used to cleanup the Apex application on exit.<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="SETUP_HYBRID_DEMO"></A>
+<P CLASS="TYPE_TITLE">
+setup_hybrid_demo
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure setup_hybrid_demo(p_name in varchar2, p_value in varchar2)
+
+</PRE>
+<P CLASS="DESC_TEXT">
+This procedure is used to set up the hybrid demo project variables. Inserts the variable into the 'tab_hybrid_demo_setup' table.<br>
+&nbsp;<br>
+%p_name The name of the variable to be set up.<br>
+%p_value The value of the variable to be set up.<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="CACHE_SET_N"></A>
+<P CLASS="TYPE_TITLE">
+cache_set_n
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure cache_set_n(p_parameter in varchar2, p_value in number)
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Sets a numeric value for a given parameter in the cache. The value is stored in the system context.<br>
+&nbsp;<br>
+%p_parameter The name of the parameter to set.<br>
+%p_value The numeric value to set for the parameter.<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="CACHE_SET_D"></A>
+<P CLASS="TYPE_TITLE">
+cache_set_d
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure cache_set_d(p_parameter in varchar2, p_value in date)
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Sets a date value for a given parameter in the cache. The value is stored in the system context.<br>
+&nbsp;<br>
+%p_parameter The name of the parameter to set.<br>
+%p_value The date value to set for the parameter.<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="CACHE_SET_C"></A>
+<P CLASS="TYPE_TITLE">
+cache_set_c
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure cache_set_c(p_parameter in varchar2, p_value in varchar2)
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Sets a text value for a given parameter in the cache. The value is stored in the system context.<br>
+&nbsp;<br>
+%p_parameter The name of the parameter to set.<br>
+%p_value The text value to set for the parameter.<br>
+
+<BR>
+</P>
+<HR>
+<A NAME="CACHE_GET_N"></A>
+<P CLASS="TYPE_TITLE">
+cache_get_n
+</P>
+<PRE CLASS="DECL_TEXT">
+Function cache_get_n(p_parameter in varchar2,
+                     p_login_id  in number default null) return number
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Retrieves the numeric cached value for the given parameter and login ID.<br>
+&nbsp;<br>
+%p_parameter The parameter to retrieve the cached value for.<br>
+%p_login_id (Optional) The login ID to retrieve the cached value for. If not provided, the function will retrieve the cached value for the Apex session login ID or the package login ID variable.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+The cached numeric value for the given parameter and login ID.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="CACHE_GET_D"></A>
+<P CLASS="TYPE_TITLE">
+cache_get_d
+</P>
+<PRE CLASS="DECL_TEXT">
+Function cache_get_d(p_parameter in varchar2,
+                     p_login_id  in number default null) return date
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Retrieves the date cached value for the given parameter and login ID.<br>
+&nbsp;<br>
+%p_parameter The parameter to retrieve the cached value for.<br>
+%p_login_id (Optional) The login ID to retrieve the cached value for. If not provided, the function will retrieve the cached value for the Apex session login ID or the package login ID variable.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+The cached date value for the given parameter and login ID.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="CACHE_GET_C"></A>
+<P CLASS="TYPE_TITLE">
+cache_get_c
+</P>
+<PRE CLASS="DECL_TEXT">
+Function cache_get_c(p_parameter in varchar2,
+                     p_login_id  in number default null) return varchar2
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Retrieves the cached value for the given parameter and login ID.<br>
+&nbsp;<br>
+%p_parameter The parameter to retrieve the cached value for.<br>
+%p_login_id (Optional) The login ID to retrieve the cached value for. If not provided, the function will retrieve the cached value for the Apex session login ID or the package login ID variable.<br>
+
+<BR>
+</P>
+<A NAME="Returns"></A>
+<TABLE CLASS="LIST_TABLE"><TR><TD CLASS="LIST_TITLE">
+Returns
+</TD></TR></TABLE>
+<TABLE CLASS="LIST_TABLE">
+<TR><TD VALIGN="TOP" CLASS="LIST_ITEM" WIDTH="1%">
+</TD><TD CLASS="DESC_TEXT" WIDTH="95%">
+The cached value for the given parameter and login ID.<br>
+
+</TD></TR>
+</TABLE>
+<BR>
+<HR>
+<A NAME="CACHE_CLEAR"></A>
+<P CLASS="TYPE_TITLE">
+cache_clear
+</P>
+<PRE CLASS="DECL_TEXT">
+Procedure cache_clear(p_parameter in varchar2 default null,
+                      p_login_id  in number default null)
+
+</PRE>
+<P CLASS="DESC_TEXT">
+Clears the cache for the hybrid manager.<br>
+&nbsp;<br>
+%p_parameter (optional) A parameter to clear from the cache. If not provided, the entire cache is cleared.<br>
+%p_login_id (optional) The login ID to clear the cache for. If not provided, the cache is cleared for the Apex session login ID or the package login ID variable.<br>
+
+<BR>
+</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

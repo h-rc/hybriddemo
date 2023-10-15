@@ -1,0 +1,10 @@
+prompt table tab_hybrid_demo_setup
+create table tab_hybrid_demo_setup(
+  name  varchar2(1000) not null,
+  value varchar2(1000));
+
+alter table tab_hybrid_demo_setup add constraint pk_hybrid_demo_setup primary key (name);
+
+comment on table  tab_hybrid_demo_setup       is 'Stores the hybrid demo setup variables';
+comment on column tab_hybrid_demo_setup.name  is 'Name of the setup variable';
+comment on column tab_hybrid_demo_setup.value is 'Value of the setup variable';

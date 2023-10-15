@@ -1,0 +1,137 @@
+prompt package hybrid_manager
+create or replace package hybrid_manager as
+
+-- Hybrid demo setup variables
+gc_setup_base_apex_url constant varchar2(100) := 'APEX_BASE_URL';
+gc_setup_apex_app_id   constant varchar2(100) := 'APEX_BASE_APP_ID';
+gc_setup_apex_page_id  constant varchar2(100) := 'APEX_BASE_PAGE_ID';
+
+-- Package login ID variable
+g_login_id number;
+
+/**
+ * This function simulates a hybrid login. 
+ *
+ * %return Returns the login id representing a new hybrid login or the existing login_id if it is set inside the package.
+ */
+function new_login return number;
+
+/**
+ * This function returns a boolean value indicating whether the Apex session is valid or not.
+ * Used inside Apex as the "Sentry Function Name". 
+ *
+ * %return Returns true if the Apex session is valid, false otherwise. 
+ */
+function apex_sentry return boolean;
+
+/**
+ * Authenticates a user. Receives the username and password from the login page. 
+ * Used inside Apex as the "Authentication Function Name". 
+ *
+ * %p_username The username from the login page.
+ * %p_password The password from the login page.
+ * %return Returns true if the authentication is successful, otherwise false.
+ */
+function apex_auth(p_username in varchar2, p_password in varchar2) return boolean;
+
+/**
+ * Generates the Apex url for the given login ID. If null is provided, the package login ID is used.
+ *
+ * %p_login_id The login ID to be used in the generated URL.
+ * %return Apex url with the specified login ID, else the package login ID. 
+ */
+function get_apex_url(p_login_id in number) return varchar2;
+
+/**
+ * Generates the Apex url for the package login ID.
+ *
+ * %return Apex url for the package login ID. 
+ */
+function get_apex_url return varchar2;
+
+/**
+ * Procedure used to initialize the Apex application. 
+ */
+procedure apex_init;
+
+/**
+ * Procedure used to cleanup the Apex application on exit. 
+ */
+procedure apex_cleanup;
+
+/**
+ * This procedure is used to set up the hybrid demo project variables. Inserts the variable into the 'tab_hybrid_demo_setup' table. 
+ * 
+ * %p_name The name of the variable to be set up.
+ * %p_value The value of the variable to be set up.
+ */
+procedure setup_hybrid_demo(p_name in varchar2, p_value in varchar2);
+
+
+/*
+ * System context cache functions.
+*/
+
+/**
+ * Sets a numeric value for a given parameter in the cache. The value is stored in the system context. 
+ *
+ * %p_parameter The name of the parameter to set.
+ * %p_value The numeric value to set for the parameter.
+ */
+procedure cache_set_n(p_parameter in varchar2, p_value in number);
+
+/**
+ * Sets a date value for a given parameter in the cache. The value is stored in the system context. 
+ *
+ * %p_parameter The name of the parameter to set.
+ * %p_value The date value to set for the parameter.
+ */
+procedure cache_set_d(p_parameter in varchar2, p_value in date);
+
+/**
+ * Sets a text value for a given parameter in the cache. The value is stored in the system context. 
+ *
+ * %p_parameter The name of the parameter to set.
+ * %p_value The text value to set for the parameter.
+ */
+procedure cache_set_c(p_parameter in varchar2, p_value in varchar2);
+
+/**
+ * Retrieves the numeric cached value for the given parameter and login ID.
+ * 
+ * %p_parameter The parameter to retrieve the cached value for.
+ * %p_login_id (Optional) The login ID to retrieve the cached value for. If not provided, the function will retrieve the cached value for the Apex session login ID or the package login ID variable. 
+ * @return The cached numeric value for the given parameter and login ID.
+ */
+function cache_get_n(p_parameter in varchar2, p_login_id in number default null) return number;
+
+/**
+ * Retrieves the date cached value for the given parameter and login ID.
+ * 
+ * %p_parameter The parameter to retrieve the cached value for.
+ * %p_login_id (Optional) The login ID to retrieve the cached value for. If not provided, the function will retrieve the cached value for the Apex session login ID or the package login ID variable. 
+ * @return The cached date value for the given parameter and login ID.
+ */
+function cache_get_d(p_parameter in varchar2, p_login_id in number default null) return date;
+
+/**
+ * Retrieves the cached value for the given parameter and login ID.
+ * 
+ * %p_parameter The parameter to retrieve the cached value for.
+ * %p_login_id (Optional) The login ID to retrieve the cached value for. If not provided, the function will retrieve the cached value for the Apex session login ID or the package login ID variable. 
+ * @return The cached value for the given parameter and login ID.
+ */
+function cache_get_c(p_parameter in varchar2, p_login_id in number default null) return varchar2;
+
+/**
+ * Clears the cache for the hybrid manager.
+ * 
+ * %p_parameter (optional) A parameter to clear from the cache. If not provided, the entire cache is cleared.
+ * %p_login_id (optional) The login ID to clear the cache for. If not provided, the cache is cleared for the Apex session login ID or the package login ID variable.
+ */
+procedure cache_clear(p_parameter in varchar2 default null, p_login_id in number default null);
+
+end hybrid_manager;
+/
+set termout on
+show errors package hybrid_manager;

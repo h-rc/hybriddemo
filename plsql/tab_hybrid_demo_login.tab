@@ -1,0 +1,16 @@
+prompt table tab_hybrid_demo_login
+create table tab_hybrid_demo_login(
+  id         number not null,
+  created_at date   not null);
+
+alter table tab_hybrid_demo_login add constraint pk_hybrid_demo_login primary key (id);
+
+comment on table  tab_hybrid_demo_login            is 'Stores the login identifications inside the hybrid demo project';
+comment on column tab_hybrid_demo_login.id         is 'Unique identifier of the login identification';
+comment on column tab_hybrid_demo_login.created_at is 'Creation date of the login identification';
+
+create sequence seq_hybrid_demo_login
+       minvalue 1
+     start with 1
+   increment by 1
+        nocache;
